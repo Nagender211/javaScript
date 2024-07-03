@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDolis</title>
+</head>
+<body>
+    <p>To list </p>
+    <input placeholder="enter the to do" class="js-input" />
+    <input type="date" class="js-date"/>
+    <button onclick="addTodo();" class="js-button">Add</button>
+    <div class="js-div"></div>
+
+
+    <script>
+        let toDolist=[{name: 'dkhfuidfh',dueDte: '22-05-2024',
+        },{
+            name: 'efeou',dueDte: '22-05-2024'
+        }];
+        rendr();
+        function rendr(){
+            let todoHtml='';
+            toDolist.forEach(function(toDdoobj,i){
+                // const toDdoobj=toDolist[i];
+                const {name,dueDte}=toDdoobj;
+                const html=`<p>${name} ${dueDte}<button onClick="toDolist.splice(${i},1); rendr();
+                    
+                   ">Delete</button></p>
+                `
+                todoHtml+=html;
+            })
+            // for(let i=0; i<toDolist.length; i++){
+                
+               
+            // }
+            console.log(todoHtml);
+            document.querySelector('.js-div').innerHTML=todoHtml;
+
+        }
+        function addTodo(){
+            const inputEle=document.querySelector('.js-input');
+            const name=inputEle.value
+            const dateValu=document.querySelector('.js-date');
+            const dueDte=dateValu.value
+            toDolist.push({name,dueDte});
+            console.log(toDolist);
+            inputEle.value='';
+            rendr();
+      
+          
+        }
+    </script>
+    
+</body>
+</html>
